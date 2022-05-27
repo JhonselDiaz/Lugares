@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding.btRegister.setOnClickListener{haceRegristro()}
         binding.btLogin.setOnClickListener { haceLogin() }
 
-//        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
     }
 
     private fun haceLogin() {
