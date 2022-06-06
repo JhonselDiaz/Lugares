@@ -15,6 +15,18 @@
     <string name="menu_lugar">Lugares</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Datos para el reciclador-->
+    <string name="msg_nombre">Nombre del lugar</string>
+    <string name="msg_correo">Correo (adc@adc.com)</string>
+    <string name="msg_telefono">Telefono (####-####)</string>
+    <string name="msg_web">Sitio Web</string>
+    <string name="bt_agregar">Agregar</string>
+    <string name="lugarAdded">LugarAgregado</string>
+    <string name="noData">Faltan Datos</string>
 
 
 </resources>
