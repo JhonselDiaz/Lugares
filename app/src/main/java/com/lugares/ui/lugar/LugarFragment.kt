@@ -15,10 +15,9 @@ import com.lugares.databinding.FragmentAddLugarBinding
 import com.lugares.databinding.FragmentLugarBinding
 import com.lugares.viewmodel.LugarViewModel
 
-class LugarFragment : Fragment() {
+class LugarFragment(private var _bingind: FragmentLugarBinding? = null) : Fragment() {
 
     private lateinit var lugarViewModel: LugarViewModel
-    private var _bingind: FragmentLugarBinding? = null
     private val binding get() = _bingind!!
 
 
