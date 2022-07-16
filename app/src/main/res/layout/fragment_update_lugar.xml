@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ui.lugar.UpdateLugarFragment" >
-
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -16,13 +15,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-
             <EditText
                 android:id="@+id/etNombre"
                 android:layout_width="match_parent"
@@ -31,7 +28,6 @@
                 android:hint="@string/msg_nombre"
                 android:inputType="textPersonName"
                 android:textAlignment="center" />
-
             <EditText
                 android:id="@+id/etCorreo"
                 android:layout_width="match_parent"
@@ -41,7 +37,6 @@
                 android:inputType="textEmailAddress"
                 android:textAlignment="center"
                 android:textStyle="italic" />
-
             <EditText
                 android:id="@+id/etTelefono"
                 android:layout_width="match_parent"
@@ -50,7 +45,6 @@
                 android:hint="@string/msg_telefono"
                 android:inputType="phone"
                 android:textAlignment="center" />
-
             <EditText
                 android:id="@+id/etWeb"
                 android:layout_width="match_parent"
@@ -59,7 +53,6 @@
                 android:hint="@string/msg_web"
                 android:inputType="textPersonName"
                 android:textAlignment="center" />
-
             <Button
                 android:id="@+id/bt_actualizar"
                 android:layout_width="match_parent"
@@ -67,28 +60,24 @@
                 android:backgroundTint="@color/teal_700"
                 android:text="@string/bt_actualizar"
                 app:iconTint="#3F51B5" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <ImageButton
                     android:id="@+id/bt_email"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="0dp"
+                    android:layout_height="92dp"
                     android:layout_weight="1"
                     android:contentDescription="@string/msg_enviar_correo"
                     android:src="@drawable/ic_email" />
-
                 <ImageButton
                     android:id="@+id/bt_phone"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="0dp"
+                    android:layout_height="92dp"
                     android:layout_weight="1"
                     android:contentDescription="@string/msg_phone_call"
                     android:src="@drawable/ic_phone" />
-
                 <ImageButton
                     android:id="@+id/bt_whatsapp"
                     android:layout_width="0dp"
@@ -98,7 +87,13 @@
                     android:scaleType="fitCenter"
                     android:src="@drawable/whatsapp_logo"
                     tools:ignore="ImageContrastCheck" />
-
+                <ImageButton
+                    android:id="@+id/bt_location"
+                    android:layout_width="0dp"
+                    android:layout_height="92dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/msg_ver_mapa"
+                    android:src="@drawable/ic_location" />
                 <ImageButton
                     android:id="@+id/bt_web"
                     android:layout_width="0dp"
@@ -107,52 +102,97 @@
                     android:contentDescription="@string/msg_web_view"
                     android:scaleType="fitCenter"
                     android:src="@drawable/web_logo" />
+                <ImageButton
+                    android:id="@+id/btPlay"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/msgEscucharAudio"
+                    android:src="@drawable/ic_play" />
             </LinearLayout>
-
-            <LinearLayout
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:elevation="25sp"
+                android:padding="10sp"
+                android:stretchColumns="*">
 
-                <TextView
-                    android:id="@+id/tv_latitud"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tv_longitud"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tv_latitud1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:text="@string/tv_latitud1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_altura"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tv_longitud1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:text="@string/tv_longitud1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                <ImageButton
-                    android:id="@+id/bt_location"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/msg_map_view"
-                    android:src="@drawable/ic_location"
-                    tools:ignore="ImageContrastCheck" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_altura1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:text="@string/tv_altura1"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_latitud"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_longitud"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_altura"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:textSize="18sp" />
+
+                </TableRow>
+            </TableLayout>
+
+            <ImageView
+                android:id="@+id/imagen"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:contentDescription="@string/msg_imagen"
+                android:scaleType="centerInside"
+                tools:ignore="ImageContrastCheck"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
