@@ -18,6 +18,8 @@ import com.lugares.model.Lugar
 import com.lugares.viewmodel.LugarViewModel
 import android.Manifest
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
+import com.bumptech.glide.Glide
 
 class UpdateLugarFragment : Fragment() {
 
@@ -29,6 +31,9 @@ class UpdateLugarFragment : Fragment() {
     private var _bingind: FragmentUpdateLugarBinding? = null
     private val binding get() = _bingind!!
     //
+    //Esuchar audio grabado
+    private lateinit var mediaPlayer: MediaPlayer
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,15 +56,51 @@ class UpdateLugarFragment : Fragment() {
         binding.btEmail.setOnClickListener{escribirCorreo()}
         binding.btPhone.setOnClickListener{llamarLugar()}
         binding.btWeb.setOnClickListener{verWeb()}
-        /*binding.btWhatsapp.setOnClickListener{enviarWhatsApp}
-        binding.btLocation.setOnClickListener{verMapa}
-      */
+        //Para iniciar y activar el boton de plau si hay un audio
+        if(args.lugar.rutaAudio?.isNotEmpty()==true){
+            mediaPlayer=MediaPlayer()
+            mediaPlayer.setDataSource(args.lugar.rutaAudio)
+            mediaPlayer.prepare()
+            binding.btPlay.isEnabled=true
+            binding.btPlay.setOnClickListener{mediaPlayer.start()}
+        }else{
+            binding.btPlay.isEnabled=false
+        }
+        //Si hay una ruta de imagen la dibuja
+        if(args.lugar.rutaImagen?.isNotEmpty()==true){
+            Glide.with(requireContext())
+                .load(args.lugar.rutaImagen)
+                .fitCenter()
+                .into(binding.imagen)
+        }
+        binding.btWhatsapp.setOnClickListener{enviarWhatsApp()}
+        binding.btLocation.setOnClickListener{verMapa()}
         //se agrega una opcion de menu en esta pantalla
         setHasOptionsMenu(true)
-
-        return binding.root
+       return binding.root
     }
-
+    private fun enviarWhatsApp() {
+        val telefono = binding.etTelefono.text.toString()
+        if(telefono.isNotEmpty()){
+            val sendIntent = Intent(Intent.ACTION_VIEW)
+            val uri= "whatsapp://send?phone=506$telefono&"+getString(R.string.msg_saludos)
+            sendIntent.setPackage("com.whatsapp")
+            sendIntent.data=Uri.parse(uri)
+            startActivity(sendIntent)
+            }else{
+            Toast.makeText(requireContext(),getString(R.string.msg_datos),Toast.LENGTH_SHORT).show()
+            }
+    }
+    private fun verMapa() {
+        val latitud = binding.tvLatitud.text.toString().toDouble()
+        val longitud = binding.tvLongitud.text.toString().toDouble()
+        if(latitud.isFinite() && longitud.isFinite()){
+            val location = Uri.parse("geo:$latitud,$longitud?z18")
+            val mapIntent = Intent(Intent.ACTION_VIEW,location)
+            startActivity(mapIntent)
+        }else{
+        }
+    }
     private fun verWeb() {
         val recurso = binding.etWeb.text.toString()
         if(recurso.isNotEmpty()){
@@ -74,7 +115,6 @@ class UpdateLugarFragment : Fragment() {
             ).show()
         }
     }
-
     private fun llamarLugar() {
         val recurso = binding.etTelefono.text.toString()
         if(recurso.isNotEmpty()){
@@ -88,10 +128,10 @@ class UpdateLugarFragment : Fragment() {
             }else{
                 requireActivity().startActivity(rutina) //Hacer llamada
             }
-
+        }else{
+            Toast.makeText(requireContext(),getString(R.string.msg_datos),Toast.LENGTH_SHORT).show()
         }
     }
-
     private fun escribirCorreo(){
         //
         val recurso = binding.etCorreo.text.toString()
@@ -103,16 +143,13 @@ class UpdateLugarFragment : Fragment() {
             rutina.putExtra(Intent.EXTRA_SUBJECT,getString(R.string.msg_saludos)+" "+binding.etNombre.text)
             rutina.putExtra(Intent.EXTRA_TEXT,getString(R.string.msg_mensaje_correo))
             startActivity(rutina)//Levanta el correo y lo presenta para modificar y enviar
-
         }else{
             Toast.makeText(
                 requireContext(),
                 getString(R.string.msg_datos),Toast.LENGTH_SHORT
             ).show()
         }
-
     }
-
     //Aca se genera el menu con el icono de borrar/
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         //"R" una clase de recursos
@@ -126,7 +163,6 @@ class UpdateLugarFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-
     private fun deleteLugar() {
         val consulta = AlertDialog.Builder(requireContext())
 
@@ -154,7 +190,6 @@ class UpdateLugarFragment : Fragment() {
         }else{
             Toast.makeText(requireContext(),getString(R.string.noData), Toast.LENGTH_SHORT).show()
         }
-
     }
     override fun onDestroyView(){
         super.onDestroyView()

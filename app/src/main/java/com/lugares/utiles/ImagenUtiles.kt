@@ -19,8 +19,15 @@ class ImagenUtiles (
     btRotaL: ImageButton,
     btRotaR: ImageButton,
     private val imagen: ImageView,
-    private var tomarFotoActivity: ActivityResultLauncher<Intent>
-) {
+    private var tomarFotoActivity: ActivityResultLauncher<Intent>)
+{
+
+    private var fotoTomada :Boolean = false
+
+    fun getFotoTomada():Boolean {
+        return fotoTomada
+    }
+
     init {
         btPhoto.setOnClickListener { tomarFoto() }
         btRotaL.setOnClickListener { imagen.rotation=imagen.rotation-90f }
@@ -59,8 +66,11 @@ class ImagenUtiles (
     fun actualizaFoto() {
         imagen.setImageBitmap(
             BitmapFactory.decodeFile(imagenFile.absolutePath))
+        fotoTomada= true
     }
+
 }
+
 
 
 

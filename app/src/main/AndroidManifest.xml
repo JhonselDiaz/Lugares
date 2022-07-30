@@ -5,6 +5,7 @@
 
     <!--Permiso para realizar llamadas-->
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <!--Permiso para GPS-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
@@ -48,6 +49,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:resource="@string/google_maps_key"/>
     </application>
 
 </manifest>

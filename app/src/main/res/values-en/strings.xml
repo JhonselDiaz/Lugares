@@ -1,9 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="default_web_client_idr" translatable="false">748716714176-rvnnapim34q2vk4uiudaqpoe3o1c4lfu.apps.googleusercontent.com</string>
-    <string name="google_maps_key" translatable="false">AIzaSyDRWHfz4U8Wy3XJIJhi_b_NIuyg_kuk_bM</string>
-    <string name="app_name" translatable="false">Lugares</string>
-    <string name="tv_correo">Correo</string>
-    <string name="tv_clave">Contraseña</string>
+    <string name="tv_correo">Email</string>
+    <string name="tv_clave">Password</string>
     <string name="msg_fallo_login">Error autenticando usuario</string>
     <string name="msg_fallo_registro">Error registrando usuario</string>
     <string name="title_activity_principal">Principal</string>
@@ -13,8 +11,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
     <string name="menu_lugar">Lugares</string>
-    <string name="menu_gallery">Mapa</string>
+    <string name="menu_gallery">Map</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -65,5 +64,4 @@
     <string name="tv_longitud1">Longitud</string>
     <string name="tv_altura1">Altura</string>
     <string name="todo">Por definir</string>
-
 </resources>
