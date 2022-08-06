@@ -76,7 +76,7 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
                 .addOnSuccessListener { location: Location? ->
                     if (location!=null) { //Se pudo leer las coordenadas gps...
                         val camaraUpdate = CameraUpdateFactory.newLatLngZoom(
-                            LatLng(location.latitude,location.longitude),15f)
+                            LatLng(location.latitude,location.longitude),1f)
                         googleMap.animateCamera(camaraUpdate)
                     }
                 }
@@ -99,8 +99,8 @@ class GalleryFragment : Fragment(), OnMapReadyCallback {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
-            ViewModelProvider(this).get(GalleryViewModel::class.java)
+        lugarViewModel =
+            ViewModelProvider(this).get(LugarViewModel::class.java)
 
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
